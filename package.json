@@ -1,0 +1,26 @@
+{
+  "name": "Complex_App",
+  "version": "1.0.0",
+  "description": "\"# Brad_Schiff_Complex_App\"",
+  "main": "app.js",
+  "scripts": {
+    "watch": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aemonicus/Brad_Schiff_Complex_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aemonicus/Brad_Schiff_Complex_App/issues"
+  },
+  "homepage": "https://github.com/Aemonicus/Brad_Schiff_Complex_App#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  }
+}
