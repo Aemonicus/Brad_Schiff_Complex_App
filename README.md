@@ -15,3 +15,10 @@ dans le fichier package.json
 dans "scripts": {
   "watch": "nodemon nomdufichierJsprincipal(dans ce projet : app)", 
 } 
+
+Etape 5
+Création de la home pour les views, User pour les models et controllers
+Traitement (sanitazation and security) des inputs de la home pour les users
+
+Etape 6 
+installation mongodb et connexion db

@@ -18,4 +18,4 @@ app.set("view engine", "ejs")
 
 app.use("/", router)
 
-app.listen(3000)
+module.exports = app
