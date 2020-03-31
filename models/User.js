@@ -60,8 +60,21 @@ User.prototype.register = function () {
   // Step 2: Only if there are no validation errors
   // then save the user data into a database
   if (!this.errors.length) {
+    // Look into the database users collection/table to insert new data
     usersCollection.insertOne(this.data)
   }
+}
+
+User.prototype.login = function (callback) {
+  this.cleanUp()
+  // Look into the database users collection/table to read/see if there is the data
+  usersCollection.findOne({ username: this.data.username }, (err, attemptedUser) => {
+    if (attemptedUser && attemptedUser.password === this.data.password) {
+      callback("Congrats!")
+    } else {
+      callback("Invalid username / password")
+    }
+  })
 }
 
 module.exports = User
