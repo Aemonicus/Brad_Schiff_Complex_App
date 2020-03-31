@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs")
 const usersCollection = require("../db").collection("users")
 const validator = require("validator")
 
@@ -58,22 +59,34 @@ User.prototype.register = function () {
   this.validate()
 
   // Step 2: Only if there are no validation errors
+  // hash password
   // then save the user data into a database
   if (!this.errors.length) {
+    // hash user password
+    let salt = bcrypt.genSaltSync(10)
+    this.data.password = bcrypt.hashSync(this.data.password, salt)
+
     // Look into the database users collection/table to insert new data
     usersCollection.insertOne(this.data)
   }
 }
 
-User.prototype.login = function (callback) {
-  this.cleanUp()
-  // Look into the database users collection/table to read/see if there is the data
-  usersCollection.findOne({ username: this.data.username }, (err, attemptedUser) => {
-    if (attemptedUser && attemptedUser.password === this.data.password) {
-      callback("Congrats!")
-    } else {
-      callback("Invalid username / password")
-    }
+User.prototype.login = function () {
+  return new Promise((resolve, reject) => {
+    this.cleanUp()
+    // Look into the database users collection/table to read/see if there is the data
+    usersCollection.findOne({ username: this.data.username }).then((attemptedUser) => {
+      // Compare login info with login and hashed password
+      if (attemptedUser && bcrypt.compareSync(this.data.password, attemptedUser.password)) {
+        resolve("Congrats!")
+      } else {
+        reject("Invalid username / password")
+      }
+    }).catch(function () {
+      if (!attemptedUser && attemptedUser.password === this.data.password) {
+        reject("Please try again later")
+      }
+    })
   })
 }
 
