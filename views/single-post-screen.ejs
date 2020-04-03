@@ -25,7 +25,7 @@
     <%= post.createdDate.getDate() %>/<%= post.createdDate.getMonth() + 1 %>/<%= post.createdDate.getFullYear() %></p>
 
   <div class="body-content">
-    <%= post.body %>
+    <%- filterUserHTML(post.body) %>
   </div>
 
 </div>
