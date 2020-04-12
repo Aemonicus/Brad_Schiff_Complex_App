@@ -22,3 +22,25 @@ Traitement (sanitazation and security) des inputs de la home pour les users
 
 Etape 6 
 installation mongodb et connexion db
+
+
+
+Lancer le projet avec "npm run watch" dans le terminal
+
+
+
+LAST ETAPE 
+Deploy on Heroku
+  Sur Udemy, cours Brad Schiff, section 13
+  Résumé :
+  Sur Heroku, dans les settings, créer deux variables tirées du fichier .env
+    - CONNECTIONSTRING
+    - JWTSECRET
+    - Celui sur le port on l'ignore, Heroku s'en chargera tout seul
+  Création à la racine du projet du fichier "Procfile"
+  Dans ce dernier, écrire :
+    - web: node db.js
+
+Sending Email with sendgrid API
+  Se connecter, créer un projet et récupérer la clé API
+  Dans le fichier .env, ajouter la clé API à la place de "cléapisendgrid"
