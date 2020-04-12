@@ -64,6 +64,15 @@ exports.login = function (req, res) {
   })
 }
 
+exports.apiLogin = function (req, res) {
+  let user = new User(req.body)
+  user.login().then(function (result) {
+    res.json("Good job, real username and password")
+  }).catch(function (error) {
+    res.json("Sorry, incorrect values")
+  })
+}
+
 exports.logout = function (req, res) {
   req.session.destroy(function () {
     res.redirect("/")
