@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Aemonicus/Brad_Schiff_Complex_App#readme",
   "dependencies": {
     "ejs": "^3.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nodemon": "^2.0.2",
     "@babel/core": "^7.8.0",
     "@babel/preset-env": "^7.8.2",
